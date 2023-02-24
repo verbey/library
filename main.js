@@ -5,29 +5,31 @@ const body = document.querySelector("body");
 const addBookBtn = document.querySelector(".addBook");
 const removeAllBtn = document.querySelector(".removeAll");
 
-function Book(author, title, pages, read) {
-	this.author = author;
-	this.title = title;
-	this.pages = pages;
-	this.read = read;
+class Book {
+	constructor(author, title, pages, read) {
+		this.author = author;
+		this.title = title;
+		this.pages = pages;
+		this.read = read;
+	}
+
+	hello() {
+		console.log(`Hi! I was written by ${this.author}, my title is ${this.title} and I have a total of ${this.pages} pages. It is ${this.read} that you read me yet.`);
+	}
+
+	edit(author, title, pages, read) {
+		this.author = author;
+		this.title = title;
+		this.pages = pages;
+		this.read = read;
+		displayBooks();
+	}
+
+	remove() {
+		library.splice(index, 1);
+		displayBooks();
+	}
 }
-
-Book.prototype.hello = function () {
-	console.log(`Hi! I was written by ${this.author}, my title is ${this.title} and I have a total of ${this.pages} pages. It is ${this.read} that you read me yet.`);
-};
-
-Book.prototype.edit = function (author, title, pages, read,) {
-	this.author = author;
-	this.title = title;
-	this.pages = pages;
-	this.read = read;
-	displayBooks();
-};
-
-Book.prototype.remove = function (index) {
-	library.splice(index, 1);
-	displayBooks();
-};
 
 function addBook(author, title, pages, read) {
 	let book = new Book(author, title, pages, read);
